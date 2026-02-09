@@ -1,0 +1,19 @@
+@if (data(); as sections) {
+  @for (section of sections; track $index; let i = $index) {
+    <div class="view-card">
+      <h3>Section {{ i + 1 }}</h3>
+      @for (num of section; track $index; let j = $index) {
+        <div class="row">
+          <span>Number {{ j + 1 }}</span>
+          <span>{{ num }}</span>
+        </div>
+      }
+      <div class="result">
+        <strong>Result</strong>
+        <strong>{{ sum(section) | number }}</strong>
+      </div>
+    </div>
+  }
+} @else {
+  <h1>Not Found!!!</h1>
+}

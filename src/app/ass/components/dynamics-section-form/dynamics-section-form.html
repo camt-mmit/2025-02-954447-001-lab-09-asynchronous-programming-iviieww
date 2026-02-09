@@ -1,0 +1,26 @@
+<div class="container">
+  <button (click)="addSection()">+ Section</button>
+
+  @for (section of sectionForm; track $index; let i = $index) {
+    <div class="section-box">
+      <div class="header">
+        <button (click)="addNumber(i)">+ Number</button> <span>Section {{ i + 1 }}</span>
+        <button class="btn-delete" (click)="removeSection(i)">X</button>
+      </div>
+
+      @for (numControl of section; track $index; let j = $index) {
+        <div class="number-row">
+          <label
+            >Number {{ j + 1 }}
+            <input type="number" [formField]="numControl" />
+          </label>
+          <button class="btn-delete" (click)="removeNumber(i, j)">X</button>
+        </div>
+      }
+
+      <div class="result-row">
+        <strong>Result: {{ sum(sectionModel()[i]) | number }}</strong>
+      </div>
+    </div>
+  }
+</div>
