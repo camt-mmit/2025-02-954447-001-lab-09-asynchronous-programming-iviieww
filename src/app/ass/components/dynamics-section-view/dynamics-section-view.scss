@@ -1,0 +1,123 @@
+/* ตัวแปรสี (ใช้ชุดเดิมเพื่อความคุมโทน) */
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$text-color: #2d3436;
+$card-bg: #ffffff;
+$bg-color: #f8f9fa;
+
+:host {
+  display: block;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* การ์ดแสดงผลแต่ละ Section */
+.view-card {
+  background: $card-bg;
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* เงานุ่มๆ */
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.4s ease-out; /* Animation ตอนโหลดมา */
+
+  /* แถบสีด้านซ้าย */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: $primary-gradient;
+  }
+
+  h3 {
+    margin: 0 0 20px 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #764ba2; /* สีม่วงเข้ม */
+    border-bottom: 2px dashed #ececec;
+    padding-bottom: 15px;
+  }
+
+  /* แถวข้อมูล (Number X : Value) */
+  .row {
+    display: flex;
+    justify-content: space-between; /* ชิดซ้าย-ขวา */
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: background 0.2s;
+
+    &:hover {
+      background-color: #f8f9fa; /* ไฮไลท์สีเทาอ่อนเมื่อเอาเมาส์ชี้ */
+    }
+
+    span:first-child {
+      color: #636e72; /* สี label เทาๆ */
+      font-weight: 500;
+    }
+
+    span:last-child {
+      color: $text-color; /* สีตัวเลขเข้มๆ */
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+  }
+
+  /* ส่วนผลรวม (Total) */
+  .result {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #ececec;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    strong:first-child {
+      font-size: 1.1rem;
+      color: #764ba2;
+    }
+
+    strong:last-child {
+      font-size: 1.5rem; /* ตัวเลขใหญ่สะใจ */
+      background: $primary-gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; /* ตัวเลขไล่สี */
+    }
+  }
+}
+
+/* กรณีไม่มีข้อมูล (Not Found) */
+h1 {
+  text-align: center;
+  margin-top: 50px;
+  color: #b2bec3;
+  font-size: 2rem;
+  font-weight: 300;
+
+  &::before {
+    content: '📂'; /* ใส่ Icon ให้ดูมีอะไรหน่อย */
+    display: block;
+    font-size: 4rem;
+    margin-bottom: 10px;
+    filter: grayscale(100%);
+    opacity: 0.5;
+  }
+}
+
+/* Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

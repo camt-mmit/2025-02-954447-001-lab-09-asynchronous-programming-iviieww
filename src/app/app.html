@@ -34,8 +34,15 @@
 
 <nav>
   <ul>
-    <li><a routerLink="./profile">Profile</a></li>
-    <li><a routerLink="./ass">Assignment</a></li>
+    <li>
+      <a routerLink="./profile" routerLinkActive="active">Profile</a>
+    </li>
+    <li>
+      <a routerLink="./ass" routerLinkActive="active">Assignment</a>
+    </li>
   </ul>
 </nav>
-<router-outlet />
+
+<div class="content-container">
+  <router-outlet />
+</div>

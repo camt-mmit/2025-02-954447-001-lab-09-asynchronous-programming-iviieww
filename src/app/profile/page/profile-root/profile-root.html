@@ -1,12 +1,14 @@
 <nav>
   <ul class="app-cmp-nav">
     <li>
-      <a routerLink="./view"> View </a>
+      <a routerLink="./view" routerLinkActive="active"> View </a>
     </li>
     <li>
-      <a routerLink="./form"> Form </a>
+      <a routerLink="./form" routerLinkActive="active"> Form </a>
     </li>
   </ul>
 </nav>
 
-<router-outlet />
+<div class="fade-in-content">
+  <router-outlet />
+</div>

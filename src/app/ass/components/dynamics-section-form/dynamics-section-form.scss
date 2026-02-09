@@ -1,0 +1,202 @@
+/* Color Variables */
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$danger-color: #ff6b6b;
+$bg-color: #f0f2f5;
+$card-bg: #ffffff;
+$text-color: #2d3436;
+$input-bg: #f8f9fa;
+
+.container {
+  padding: 40px 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: $text-color;
+}
+
+/* ปุ่มใหญ่เพิ่ม Section (Hero Button) */
+button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ปุ่ม Add Section ด้านบนสุด */
+.container > button:first-child {
+  width: 100%;
+  padding: 15px;
+  background: $primary-gradient;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(118, 75, 162, 0.5);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+/* การ์ด Section */
+.section-box {
+  background: $card-bg;
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* เงานุ่มๆ */
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+
+  /* แถบสีด้านซ้ายการ์ด */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: $primary-gradient;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed #ececec;
+
+    span {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: $primary-gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; /* ตัวหนังสือไล่สี */
+    }
+
+    /* ปุ่ม Add Number (Outline Style) */
+    button:first-child {
+      background: transparent;
+      border: 2px solid #764ba2;
+      color: #764ba2;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+
+      &:hover {
+        background: #764ba2;
+        color: white;
+      }
+    }
+  }
+
+  /* แถว Number */
+  .number-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+    animation: fadeIn 0.3s ease-in;
+
+    label {
+      min-width: 80px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #a0aec0;
+    }
+
+    /* Input สไตล์ Modern */
+    input {
+      flex: 1;
+      padding: 12px 15px;
+      background: $input-bg;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      font-size: 1rem;
+      color: $text-color;
+      font-weight: 600;
+      transition: all 0.2s;
+      text-align: right;
+
+      &:focus {
+        outline: none;
+        background: white;
+        border-color: #764ba2;
+        box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.1);
+      }
+    }
+  }
+
+  /* ปุ่ม Delete (X) ทั้ง Section และ Number */
+  .btn-delete {
+    background: rgba(255, 107, 107, 0.1);
+    color: $danger-color;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem; // เพิ่มขนาดกากบาท
+    transition: all 0.2s;
+
+    &:hover {
+      background: $danger-color;
+      color: white;
+      transform: rotate(90deg); /* หมุนเวลากดลบ */
+    }
+  }
+
+  .header .btn-delete {
+    /* ปรับปุ่มลบ Section ให้เด่นขึ้นนิดนึง */
+    width: 40px;
+    height: 40px;
+  }
+
+  /* ผลรวม */
+  .result-row {
+    margin-top: 25px;
+    padding-top: 15px;
+    text-align: right;
+    font-size: 1.4rem;
+    color: $text-color;
+    border-top: 1px solid #ececec;
+
+    strong {
+      display: inline-block;
+      position: relative;
+
+      &::after {
+        content: 'THB'; /* สมมติว่าเป็นหน่วยเงิน หรือลบออกก็ได้ */
+        font-size: 0.8rem;
+        color: #a0aec0;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+/* Animation ตอนเพิ่มแถวใหม่ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

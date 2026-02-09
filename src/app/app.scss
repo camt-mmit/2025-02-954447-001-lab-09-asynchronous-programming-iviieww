@@ -1,0 +1,53 @@
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$text-color: #2d3436;
+
+/* จัดกล่อง Navbar */
+nav {
+  background: #ffffff;
+  padding: 15px 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* เงานุ่มๆ ด้านล่าง */
+  display: flex;
+  justify-content: center; /* จัดกึ่งกลาง (หรือเปลี่ยนเป็น space-between ถ้ามีโลโก้) */
+  position: sticky; /* ให้ติดอยู่ด้านบนเสมอ */
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 30px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 15px; /* ระยะห่างระหว่างปุ่ม */
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+}
+
+/* ดีไซน์ปุ่ม Link */
+a {
+  text-decoration: none;
+  color: #636e72;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 24px;
+  border-radius: 50px; /* ปุ่มมนเป็นแคปซูล */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+
+  /* Effect ตอนเอาเมาส์ไปชี้ (Hover) */
+  &:hover {
+    background-color: #f0f2f5;
+    color: #764ba2;
+    transform: translateY(-1px);
+  }
+
+  /* Effect ตอนกดค้างไว้ (Active Link) */
+  &.active {
+    background: $primary-gradient;
+    color: white;
+    box-shadow: 0 4px 12px rgba(118, 75, 162, 0.3); /* เงาสีม่วง */
+  }
+}
